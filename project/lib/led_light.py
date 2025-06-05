@@ -38,12 +38,19 @@ class Led_Light(Pin):
         elif value == 1:
             self.on()
 
-red_light = Led_Light(3, False, False)
+    def flash(self, duration=5):
+        if self.__flashing:
+            end_time = time() + duration
+            while time() < end_time:
+                self.toggle()
+                sleep(0.5)
 
-while True:
-    print(red_light.led_light_state)
-    red_light.led_light_state = 1
-    sleep(0.5)
-    print(red_light.led_light_state)
-    red_light.led_light_state = 0
-    sleep(0.5)
+
+    def on_for(self, duration):
+        self.on()
+        if self.__debug:
+            print(f"LED conected to Pin {self.__pin} is ON for {duration} seconds")
+        sleep(duration)
+        self.off()
+        if self.__debug:
+            print(f"LED connected to Pin {self.__pin} is OFF after {duration} seconds")
