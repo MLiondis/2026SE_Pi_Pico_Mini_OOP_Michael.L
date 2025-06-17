@@ -4,19 +4,18 @@ from time import sleep
 #make the buzzer connect the pin on the pico and set the debug to true
 buzzer = Audio_Notification(27, debug=True)
 
-timer = 10
+timer = 20
 while True:
 #make the buzzer turn on for the time allocated in the func
-    buzzer.warning_on()
-    sleep(1)
-    if timer < 4:
+    buzzer.beep(500, 100)
+    if timer >= 15:
+        sleep(2)
+    if timer >= 10:
+        sleep(1)
+    if timer >= 5:      
         sleep(0.5)
-    if timer < 2:
-        sleep(0.25)
-    if timer < 1:
-        buzzer.warning_on()
-        buzzer.warning_off()
+    elif timer <= 5:
+        while True:
+            buzzer.beep(500, 90)
+            sleep(0.1)
     timer -= 1
-
-# turn the buzzer off again
-buzzer.warning_off()

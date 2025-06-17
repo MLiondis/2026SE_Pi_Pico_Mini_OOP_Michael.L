@@ -1,13 +1,18 @@
 from pedestrian_button import Pedestrian_Button
-import time
+from led_light import Led_Light
+from time import sleep
 
 #create a pedestrian button for gpiopin 14
-button = Pedestrian_Button(22, debug=True)
+button = Pedestrian_Button(22, debug=False)
+
+led_light = Led_Light(3, True, False)
 
 while True:
-    # waits until the button has been pressed
-    if button.button_state:
-        #If button pressed prin(), then change the state back to false
-        print("A pedestrian is waiting")
-        button.button_state = False
-    time.sleep(0.5)
+    if button.button_state() == 1:
+        led_light.on()
+        print("LED is on")
+        sleep(0.5)
+    if button.button_state() == 0:
+        led_light.off()
+        print("LED is off")
+        sleep(0.5)
