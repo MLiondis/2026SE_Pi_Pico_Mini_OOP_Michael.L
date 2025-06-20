@@ -7,7 +7,7 @@ buzzer = Audio_Notification(27, debug=True)
 timer = 20
 while True:
 #make the buzzer turn on for the time allocated in the func
-    buzzer.beep(500, 100)
+    buzzer.beep(100, 100)
     if timer >= 15:
         sleep(2)
     if timer >= 10:
@@ -16,6 +16,6 @@ while True:
         sleep(0.5)
     elif timer <= 5:
         while True:
-            buzzer.beep(500, 90)
+            buzzer.beep(100, 90)
             sleep(0.1)
     timer -= 1

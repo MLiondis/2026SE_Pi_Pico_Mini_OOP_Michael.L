@@ -1,12 +1,12 @@
 from led_light import Led_Light
 from pedestrian_button import Pedestrian_Button
-from audio_notfication import Audio_Notification
+from audio_notification import Audio_Notification
 from controller import TrafficLightSubsystem, PedestrianSubsystem
 from time import sleep
 
 red_light = Led_Light(3, False, debug=True)
 amber_light = Led_Light(5, False, debug=True)
-green_light = Led_Light(7, False, debug=True)
+green_light = Led_Light(6, False, debug=True)
 
 P_red_light = Led_Light(19, True, debug=True)
 P_green_light = Led_Light(17, True, debug=True)
@@ -18,9 +18,19 @@ P_buzzer = Audio_Notification(27, debug=True)
 traffic = TrafficLightSubsystem(red_light, amber_light, green_light, debug=True)
 pedestrian = PedestrianSubsystem(P_red_light, P_green_light, P_button, P_buzzer, debug=True)
 
-def Subsystem_driver():
+def Traffic_Subsystem_Driver():
 
-    print("Pedestrian is waiting, cars are going")
+    print("Testing traffic light in 3 seconds")
+    sleep(3)
+    traffic.show_red()
+    print("Red: ON, Green: OFF, Amber: OFF")
+    sleep(3)
+    traffic.show_amber()
+    print("Red: OFF, Green: OFF, Amber: ON")
+    sleep(3)
     traffic.show_green()
-    pedestrian.show_stop()
-    sleep(5)
+    print("Red: OFF, Green: ON, Amber: OFF")
+    sleep(10)
+    
+
+Traffic_Subsystem_Driver()
