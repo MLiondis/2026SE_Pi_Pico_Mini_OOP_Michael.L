@@ -26,7 +26,7 @@ class Audio_Notification(PWM):
         if self.__debug:
             print("Beep")
         self.freq(freq)
-        self.duty_u16(65536) # 50% duty cycle
+        self.duty_u16(65536) # 100% duty cycle
         sleep(duration / 1000)
         self.duty_u16(0) # turn off ater beep
 

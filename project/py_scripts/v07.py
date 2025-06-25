@@ -30,7 +30,24 @@ def Traffic_Subsystem_Driver():
     sleep(3)
     traffic.show_green()
     print("Red: OFF, Green: ON, Amber: OFF")
-    sleep(10)
-    
+    sleep(5)
+    green_light.off()
+
+def Pedestrian_Subsystem_Driver():
+
+    print("Testing pedestrian lights in 3 seconds")
+    sleep(3)
+    pedestrian.show_stop()
+    print("Red: ON, Green: OFF")
+    sleep(3)
+    pedestrian.show_walk()
+    print("Red: OFF, Green: ON")
+    sleep(3)
+
+    print("testing pedestrian warning in 3 seconds")
+    sleep(3)
+    while True:
+        pedestrian.show_warning()
 
 Traffic_Subsystem_Driver()
+Pedestrian_Subsystem_Driver()
