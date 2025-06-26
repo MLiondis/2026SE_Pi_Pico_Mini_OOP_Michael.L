@@ -17,6 +17,7 @@ P_buzzer = Audio_Notification(27, debug=True)
 
 traffic = TrafficLightSubsystem(red_light, amber_light, green_light, debug=True)
 pedestrian = PedestrianSubsystem(P_red_light, P_green_light, P_button, P_buzzer, debug=True)
+system = Controller(P_red_light, P_green_light, P_button, P_buzzer)
 
 def Traffic_Subsystem_Driver():
 
