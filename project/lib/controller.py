@@ -110,3 +110,24 @@ class Controller:
             print("System: WARNING state")
         self.__pedestrian_signals.show_stop()
         self.__traffic_lights.show_error()
+
+    def update(self):
+        now = time()
+        print(self.state)
+        if self.state == "IDLE":
+            self.set_idle_state()
+            if self.__pedestrian_signals.is_button_pressed():
+                self.state == "CHANGING"
+                print(self.state)
+                self.last_state_change = now
+        elif self.state == "CHANGING":
+            self.set_change_state()
+            if time.now() - self.last_state_change >= 10:
+                self.last_state_change = now
+                sleep(5)
+                self.set_walk_state()
+                sleep(5)
+                self.set_warning_state()
+                sleep(3)
+        else:
+            self.error_state()

@@ -19,22 +19,17 @@ traffic = TrafficLightSubsystem(red_light, amber_light, green_light, debug=False
 pedestrian = PedestrianSubsystem(P_red_light, P_green_light, P_button, P_buzzer, debug=False)
 system = Controller(P_red_light, P_green_light, red_light, amber_light, green_light, P_button, P_buzzer, debug=False)
 
-def System_driver():
-    print("System test")
-    sleep(3)
-    print("Idle state for 5 seconds")
-    system.set_idle_state()
-    sleep(5)
-    print("Change state for 5 seconds")
-    system.set_change_state()
-    sleep(5)
-    print("Walk state for 5 seconds")
-    system.set_walk_state()
-    print("Warning state for 5 seconds")
-    system.set_warning_state()
-    sleep(5)
-    print("Error state for 5 seconds")
-    system.error_state()
-    sleep(5)
+controller = Controller(
+    P_red_light,
+    P_green_light,
+    red_light,
+    amber_light,
+    green_light,
+    P_button,
+    P_buzzer,
+    True,
+)
 
-System_driver()
+while True:
+    controller.update()
+    sleep(0.1)

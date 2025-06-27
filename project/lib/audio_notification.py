@@ -33,7 +33,7 @@ class Audio_Notification(PWM):
     def warning_on(self):
         """
             Sets the buzzer to buzz at a certain frequency & duration
-
+            
             Sets a cooldown time for the buzzer to buzz again
         """
         if self.__debug:
